@@ -47,4 +47,6 @@ dependencies {
     compile files('libs/FaceppSDK.jar')
     compile files('libs/MobCommons-2016.0303.1229.jar')
     compile files('libs/MobTools-2016.0303.1229.jar')
+    compile files('libs/AMap_Location_V3.3.0_20170118.jar')
+    compile files('libs/Amap_2DMap_V4.2.0_20170209.jar')
 }

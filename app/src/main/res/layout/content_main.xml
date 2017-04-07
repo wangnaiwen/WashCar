@@ -9,8 +9,9 @@
     tools:context="com.wnw.washcar.view.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-   <TextView
+   <ListView
+       android:id="@+id/lv_store"
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:text="毕设"/>
+       android:layout_height="match_parent">
+   </ListView>
 </RelativeLayout>
