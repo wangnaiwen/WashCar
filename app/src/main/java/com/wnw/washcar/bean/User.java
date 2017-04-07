@@ -1,5 +1,7 @@
 package com.wnw.washcar.bean;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
@@ -7,11 +9,20 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by wxx on 2017/3/24.
  */
 
-public class User extends BmobObject {
+public class User extends BmobObject implements Serializable{
     private String phone;
     private String password;
     private String nickname;
+    private Double money;
     private BmobFile img;
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
 
     public BmobFile getImg() {
         return img;

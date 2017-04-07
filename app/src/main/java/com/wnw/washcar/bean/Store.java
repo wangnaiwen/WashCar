@@ -17,6 +17,15 @@ public class Store extends BmobObject implements Serializable{
     private String latitude;
     private String personal;
     private BmobFile pic;
+    private Double washPrice;
+
+    public Double getWashPrice() {
+        return washPrice;
+    }
+
+    public void setWashPrice(Double washPrice) {
+        this.washPrice = washPrice;
+    }
 
     public String getPhone() {
         return phone;

@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity
         user.setPhone(preferences.getString("phone", ""));
         user.setNickname(preferences.getString("nickname", ""));
         user.setPassword(preferences.getString("password", ""));
+        user.setMoney(Double.parseDouble(preferences.getString("money","0.0")));
         url = preferences.getString("url", "");
         imgName = preferences.getString("imgName", "");
     }
@@ -163,6 +164,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_setting) {
             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }else if(id == R.id.wallet){
+            Intent intent = new Intent(MainActivity.this, WalletActivity.class);
+            intent.putExtra("money",user.getMoney()+"");
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }else if(id == R.id.my_order){
+            Intent intent = new Intent(MainActivity.this, MyOrderActivity.class);
+            intent.putExtra("userId",user.getObjectId());
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
@@ -271,7 +282,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.lv_store:
                 Intent intent = new Intent(MainActivity.this, StoreDetailActivity.class);
                 intent.putExtra("store", storeList.get(i));
-                startActivity(intent);
+                intent.putExtra("userId", user.getObjectId());
+                startActivityForResult(intent, 1);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
         }
@@ -291,6 +303,10 @@ public class MainActivity extends AppCompatActivity
             if (resultCode == RESULT_OK) {
                 user.setNickname(intent.getStringExtra("nickname"));
                 nickNameView.setText(user.getNickname());
+            }
+        }else if (requestCode == 1){
+            if (resultCode == RESULT_OK){
+                user = (User)intent.getSerializableExtra("user");
             }
         }
     }

@@ -133,6 +133,7 @@ public class LoginSetPasswdAty extends Activity implements
                     user.setPhone(phoneNum);
                     user.setPassword(login_edit_setpasswd.getText().toString().trim());
                     user.setNickname(nickName.getText().toString().trim());
+                    user.setMoney(100.0);
                     BmobFile bmobFile = new BmobFile("user.png","","http://bmob-cdn-10027.b0.upaiyun.com/2017/03/26/5c510f47ff85485cb0017934e3dd17c1.png");
                     user.setImg(bmobFile);
                     insertUser();
@@ -178,6 +179,7 @@ public class LoginSetPasswdAty extends Activity implements
         editor.putString("password", user.getPassword());
         editor.putString("url",user.getImg().getFileUrl());
         editor.putString("imgName", user.getImg().getFilename());
+        editor.putString("money", user.getMoney()+"");
         editor.apply();
     }
 

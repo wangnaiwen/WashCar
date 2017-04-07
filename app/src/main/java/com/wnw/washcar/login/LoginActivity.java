@@ -171,6 +171,7 @@ public class LoginActivity extends Activity implements
         BmobFile file = mUser.getImg();
         editor.putString("url", file.getFileUrl());
         editor.putString("imgName", file.getFilename());
+        editor.putString("money",mUser.getMoney()+"");
         editor.apply();
     }
 
